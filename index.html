@@ -1,0 +1,374 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+    <title>Hello jQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>    
+	<script>
+	function writeValue()
+{
+	$(document).ready(function() {
+		  var table = $('#example').DataTable( {
+			"columns": 
+			[
+				{ "title": "Name", "data": "name" },	
+                { "title": "Height", "data": "height" },
+				{ "title": "Hair Color", "data": "hair_color" },
+				{ "title": "Skin Color", "data": "skin_color" },
+				{ "title": "Gender", "data": "gender" },	
+				{ "title": "Films", "data": "films",render: function (data, type, row, meta) {			   
+					var currentCell = $("#example").DataTable().cells({"row":meta.row, "column":meta.col}).nodes(0);
+					if(data.length == 2)
+					{
+						 $.ajax({
+							url: data[0],
+							success:function(response1){
+							   $.ajax({
+									url: data[1],
+									success:function(response2){
+												 $(currentCell).text(response1.title+', '+response2.title); 
+									},
+							   });
+							},
+						   });
+					}
+		            else if(data.length == 1)
+					{
+						$.ajax({
+							url: data[0],
+							success:function(response1){
+										 $(currentCell).text(response1.title); 							
+							},
+						   });
+					}
+					else if(data.length == 3)
+					{
+						    $.ajax({
+							url: data[0],
+							success:function(response1){
+							   $.ajax({
+									url: data[1],
+									success:function(response2){
+										 $.ajax({
+											url: data[2],
+											success:function(response3){
+												 $(currentCell).text(response1.title+', '+response2.title+', '+response3.title); 
+											},
+									   });
+									},
+							   });
+							},
+						   });
+					}
+					else if(data.length == 4)
+					{
+						  $.ajax({
+							url: data[0],
+							success:function(response1){
+							   $.ajax({
+									url: data[1],
+									success:function(response2){
+										 $.ajax({
+											url: data[2],
+											success:function(response3){
+												 $.ajax({
+													url: data[3],
+													success:function(response4){
+														 $(currentCell).text(response1.title+', '+response2.title+', '+response3.title+', '+response4.title); 
+													},
+											   });
+											},
+									   });
+									},
+							   });
+							},
+						   });
+					}
+					else if(data.length == 5)
+					{
+						$.ajax({
+							url: data[0],
+							success:function(response1){
+							   $.ajax({
+									url: data[1],
+									success:function(response2){
+										 $.ajax({
+											url: data[2],
+											success:function(response3){
+												 $.ajax({
+													url: data[3],
+													success:function(response4){
+														 $.ajax({
+															url: data[4],
+															success:function(response5){
+																 $(currentCell).text(response1.title+', '+response2.title+', '+response3.title+', '+response4.title+', '+response5.title); 
+															},
+													   });
+													},
+											   });
+											},
+									   });
+									},
+							   });
+							},
+						   });
+					}
+					else if(data.length == 6)
+					{
+						$.ajax({
+							url: data[0],
+							success:function(response1){
+							   $.ajax({
+									url: data[1],
+									success:function(response2){
+										 $.ajax({
+											url: data[2],
+											success:function(response3){
+												 $.ajax({
+													url: data[3],
+													success:function(response4){
+														 $.ajax({
+															url: data[4],
+															success:function(response5){
+																 $.ajax({
+																	url: data[5],
+																	success:function(response6){
+																		 $(currentCell).text(response1.title+', '+response2.title+', '+response3.title+', '+response4.title+', '+response5.title+', '+response6.title); 
+																	},
+															   });
+													   },
+													   });
+													},
+											   });
+											},
+									   });
+									},
+							   });
+							},
+						   });
+					}
+					else if(data.length == 7)
+					{
+						 $.ajax({
+							url: data[0],
+							success:function(response1){
+							   $.ajax({
+									url: data[1],
+									success:function(response2){
+										 $.ajax({
+											url: data[2],
+											success:function(response3){
+												 $.ajax({
+													url: data[3],
+													success:function(response4){
+														 $.ajax({
+															url: data[4],
+															success:function(response5){
+																 $.ajax({
+																	url: data[5],
+																	success:function(response6){
+																		$.ajax({
+																				url: data[6],
+																				success:function(response7){
+																					 $(currentCell).text(response1.title+', '+response2.title+', '+response3.title+', '+response4.title+', '+response5.title+', '+response6.title+', '+response7.title); 
+																				},
+																		   }); 
+																	},
+															   });
+													   },
+													   });
+													},
+											   });
+											},
+									   });
+									},
+							   });
+							},
+						   });
+					}
+					
+					return null;
+				}},							
+                { "title": "Planet", "data": "homeworld", render: function (data, type, row, meta) {			   
+					var currentCell = $("#example").DataTable().cells({"row":meta.row, "column":meta.col}).nodes(0);				
+				
+					  $.ajax({
+						url: data,
+						type: 'GET',
+						dataType: "json",
+						success: function(d) {
+							$(currentCell).text(d.name);
+						},
+					});
+					return null;
+				}},
+				{ "title": "Species", "data": "species",render: function (data, type, row, meta) {			   
+					var currentCell = $("#example").DataTable().cells({"row":meta.row, "column":meta.col}).nodes(0);
+					$.ajax({
+							url: data[0],
+							success:function(response1){
+										 $(currentCell).text(response1.name); 							
+							},
+						   });
+					return null;	   
+				}},
+				{ "title": "Vehicles", "data": "vehicles",render: function (data, type, row, meta) {			   
+					var currentCell = $("#example").DataTable().cells({"row":meta.row, "column":meta.col}).nodes(0);
+					if(data.length == 1)
+					{
+						$.ajax({
+								url: data[0],
+								success:function(response1){
+											 $(currentCell).text(response1.name); 							
+								},
+							   });
+					}
+					else if(data.length == 2)
+					{
+						$.ajax({
+							url: data[0],
+							success:function(response1){
+									$.ajax({
+									url: data[1],
+									success:function(response2){
+												 $(currentCell).text(response1.name+','+response2.name); 							
+									},
+								   });
+							},
+					    });
+					}
+					return null;	   
+				}},
+				{ "title": "Starships", "data": "starships",render: function (data, type, row, meta) {			   
+					var currentCell = $("#example").DataTable().cells({"row":meta.row, "column":meta.col}).nodes(0);
+					if(data.length == 1)
+					{
+						$.ajax({
+								url: data[0],
+								success:function(response1){
+											 $(currentCell).text(response1.name); 							
+								},
+							   });
+					}
+					else if(data.length == 2)
+					{
+						$.ajax({
+							url: data[0],
+							success:function(response1){
+									$.ajax({
+									url: data[1],
+									success:function(response2){
+												 $(currentCell).text(response1.name+','+response2.name); 							
+									},
+								   });
+							},
+					    });
+					}
+					else if(data.length == 3)
+					{
+						$.ajax({
+							url: data[0],
+							success:function(response1){
+									$.ajax({
+									url: data[1],
+									success:function(response2){
+												$.ajax({
+												url: data[2],
+												success:function(response3){
+															 $(currentCell).text(response1.name+','+response2.name+','+response3.name); 							
+												},
+											   }); 							
+									},
+								   });
+							},
+					    });
+					}
+					else if(data.length == 5)
+					{
+						$.ajax({
+							url: data[0],
+							success:function(response1){
+									$.ajax({
+									url: data[1],
+									success:function(response2){
+												$.ajax({
+												url: data[2],
+												success:function(response3){
+															$.ajax({
+															url: data[3],
+															success:function(response4){
+																	$.ajax({
+																	url: data[4],
+																	success:function(response5){
+																				 $(currentCell).text(response1.name+','+response2.name+','+response3.name+','+response4.name+','+response5.name); 							
+																	},
+																   }); 							
+															},
+														   }); 							
+												},
+											   }); 							
+									},
+								   });
+							},
+					    });
+					}
+					return null;	   
+				}}
+			]
+		});	
+	
+	for(var i = 1; i < 10; i++) {			
+	  $.ajax({
+		 url: 'https://swapi.co/api/people/?page='+i+'&format=json',
+		 dataType: 'json',
+		 success: function(json){
+		   table.rows.add(json.results).draw();
+	   }
+	 });
+	}
+});		
+$(document).ready(function() {
+		var table2 = $('#example2').DataTable( {
+			"columns": 
+			[
+				{ "title": "Title", "data": "title" },	
+                { "title": "Episode Id", "data": "episode_id" },
+				{ "title": "Opening Crawl", "data": "opening_crawl" },
+				{ "title": "Director", "data": "director" },
+				{ "title": "Producer", "data": "producer" },
+				{ "title": "Release Date", "data": "release_date" }
+			]
+		});	 
+	
+	  $.ajax({
+		 url: 'https://swapi.co/api/films/?format=json',
+		 dataType: 'json',
+		 success: function(json){
+		   table2.rows.add(json.results).draw();
+	   }
+	 });
+});		
+}
+
+	</script>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    </head>
+
+    <body onload="writeValue()">
+			<div class="container" style="margin-right:auto;margin-left:auto;margin-top:10px;">
+			<h1 style="margin-left:500px;color:blue;">Star Wars Information Page</h1>
+			<table id="example">
+				<thead>
+				</thead>
+				<tbody></tbody>
+		    </table>
+			<h1 style="margin-left:500px;margin-top:100px;color:blue;">Film Informations</h1>
+			<table id="example2">
+				<thead>
+				</thead>
+				<tbody></tbody>
+		    </table>
+        </div>
+    </body>
+</html>
