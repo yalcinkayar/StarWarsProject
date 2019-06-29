@@ -5,7 +5,7 @@
 			"columns": 
 			[
 				{ "title": "Name", "data": "name" },	
-                { "title": "Height", "data": "height" },
+                        { "title": "Height", "data": "height" },
 				{ "title": "Hair Color", "data": "hair_color" },
 				{ "title": "Skin Color", "data": "skin_color" },
 				{ "title": "Gender", "data": "gender" },	
