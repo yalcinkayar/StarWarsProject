@@ -94,7 +94,7 @@
 						filmTitle2.done(function(msg2) {
 						filmTitle3.done(function(msg3) {
 						filmTitle4.done(function(msg4) {
-                                               filmTitle5.done(function(msg5) {
+                                                filmTitle5.done(function(msg5) {
 						filmTitle6.done(function(msg6) {
 							    $(currentCell).text(msg1.title + ', ' + msg2.title+ ', ' + msg3.title+ ', ' + msg4.title+ ', ' + msg5.title+ ', ' + msg6.title); 
 						});
@@ -199,7 +199,7 @@
 						var StarshipName3 = getName(data[2]);
 						StarshipName1.done(function(msg1) {
 						StarshipName2.done(function(msg2) {
-                                                   StarshipName3.done(function(msg3) {							
+                                                StarshipName3.done(function(msg3) {							
 							$(currentCell).text(msg1.name+','+msg2.name+','+msg3.name); 		
 						});
 						});
@@ -258,7 +258,7 @@ $(document).ready(function() {
 			"columns": 
 			[
 				{ "width": "15%","title": "Title", "data": "title" },	
-                               { "width": "10%","title": "Episode Id", "data": "episode_id" },
+                                { "width": "10%","title": "Episode Id", "data": "episode_id" },
 				{ "width": "30%","title": "Opening Crawl", "data": "opening_crawl" },
 				{ "title": "Director", "data": "director" },
 				{ "title": "Producer", "data": "producer" },
