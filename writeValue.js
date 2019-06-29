@@ -12,7 +12,7 @@
 				{ "width": "15%","title": "Films", "data": "films",render: function (data, type, row, meta) {			   
 					var currentCell = $("#example").DataTable().cells({"row":meta.row, "column":meta.col}).nodes(0);
 	
-		            if(data.length == 1)
+		                     if(data.length == 1)
 					{
 						var filmTitle = getFilmTitle(data[0]);
 						filmTitle.done(function(msg) {
@@ -73,7 +73,7 @@
 						filmTitle2.done(function(msg2) {
 						filmTitle3.done(function(msg3) {
 						filmTitle4.done(function(msg4) {
-                                              filmTitle5.done(function(msg5) {							
+                                                filmTitle5.done(function(msg5) {							
 							    $(currentCell).text(msg1.title + ', ' + msg2.title+ ', ' + msg3.title+ ', ' + msg4.title+ ', ' + msg5.title); 
 						});
 						});
@@ -94,7 +94,7 @@
 						filmTitle2.done(function(msg2) {
 						filmTitle3.done(function(msg3) {
 						filmTitle4.done(function(msg4) {
-                                           filmTitle5.done(function(msg5) {
+                                             filmTitle5.done(function(msg5) {
 						filmTitle6.done(function(msg6) {
 							    $(currentCell).text(msg1.title + ', ' + msg2.title+ ', ' + msg3.title+ ', ' + msg4.title+ ', ' + msg5.title+ ', ' + msg6.title); 
 						});
@@ -118,7 +118,7 @@
 						filmTitle2.done(function(msg2) {
 						filmTitle3.done(function(msg3) {
 						filmTitle4.done(function(msg4) {
-                                            filmTitle5.done(function(msg5) {
+                                              filmTitle5.done(function(msg5) {
 						filmTitle6.done(function(msg6) {
 						filmTitle7.done(function(msg7) {	
 							    $(currentCell).text(msg1.title + ', ' + msg2.title+ ', ' + msg3.title+ ', ' + msg4.title+ ', ' + msg5.title+ ', ' + msg6.title+ ', ' + msg7.title); 
@@ -132,7 +132,7 @@
 					}					
 					return null;
 				}},							
-                            { "title": "Planet", "data": "homeworld", render: function (data, type, row, meta) {			   
+                              { "title": "Planet", "data": "homeworld", render: function (data, type, row, meta) {			   
 					var currentCell = $("#example").DataTable().cells({"row":meta.row, "column":meta.col}).nodes(0);				
 					
 					var PlanetName = getName(data);
@@ -199,7 +199,7 @@
 						var StarshipName3 = getName(data[2]);
 						StarshipName1.done(function(msg1) {
 						StarshipName2.done(function(msg2) {
-                                           StarshipName3.done(function(msg3) {							
+                                               StarshipName3.done(function(msg3) {							
 							$(currentCell).text(msg1.name+','+msg2.name+','+msg3.name); 		
 						});
 						});
@@ -214,9 +214,9 @@
 						var StarshipName5 = getName(data[4]);
 						StarshipName1.done(function(msg1) {
 						StarshipName2.done(function(msg2) {
-                                          StarshipName3.done(function(msg3) {
-                                          StarshipName4.done(function(msg4) {	
-                                          StarshipName5.done(function(msg5) {						
+                                             StarshipName3.done(function(msg3) {
+                                             StarshipName4.done(function(msg4) {	
+                                             StarshipName5.done(function(msg5) {						
 							$(currentCell).text(msg1.name+','+msg2.name+','+msg3.name+','+msg4.name+','+msg5.name); 		
 						});
 						});
